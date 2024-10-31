@@ -7,7 +7,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.ref_name }}
+#  IMAGE_NAME: ${{ github.ref_name }}
 
 jobs:
   build:
@@ -35,7 +35,9 @@ jobs:
 
       - run: |
           COMPONENT="${GITHUB_REF_NAME%%-*}"
+          VERSION="${GITHUB_REF_NAME#*-}"
           echo "COMPONENT=$COMPONENT" >> $GITHUB_ENV
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       - uses: docker/build-push-action@v6
         with:
@@ -44,7 +46,7 @@ jobs:
           file: ${{ env.COMPONENT }}/Dockerfile
           push: true
 #          tags: ${{ steps.meta.outputs.tags }}
-          tags: ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}
+          tags: ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.COMPONENT }}-ubi:${{ env.VERSION }}
 #          labels: ${{ steps.meta.outputs.labels }}
 #          build-args: |
 #            VERSION=${{ steps.meta.outputs.version }}
