@@ -46,8 +46,8 @@ jobs:
           file: ${{ env.COMPONENT }}/Dockerfile
           push: true
 #          tags: ${{ steps.meta.outputs.tags }}
-#          tags: ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.COMPONENT }}-ubi:${{ env.VERSION }}
-          tags: ${{ env.REGISTRY }}/${{ github.repository_owner }}/ubi-images:${{ env.VERSION }}
+          tags: ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.COMPONENT }}-ubi:${{ env.VERSION }}
+#          tags: ${{ env.REGISTRY }}/${{ github.repository_owner }}/ubi-images:${{ env.VERSION }}
 #          labels: ${{ steps.meta.outputs.labels }}
 #          build-args: |
 #            VERSION=${{ steps.meta.outputs.version }}
