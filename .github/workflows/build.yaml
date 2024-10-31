@@ -33,10 +33,15 @@ jobs:
 #            type=ref,event=pr
 #            type=semver,pattern={{version}}
 
+      - run: |
+          COMPONENT="${GITHUB_REF_NAME%%-*}"
+          echo "COMPONENT=$COMPONENT" >> $GITHUB_ENV
+
       - uses: docker/build-push-action@v6
         with:
           context: .
           platforms: linux/amd64,linux/arm64
+          file: ${{ env.COMPONENT }}/Dockerfile
           push: true
 #          tags: ${{ steps.meta.outputs.tags }}
           tags: ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}
