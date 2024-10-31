@@ -44,7 +44,7 @@ jobs:
           file: ${{ env.COMPONENT }}/Dockerfile
           push: true
 #          tags: ${{ steps.meta.outputs.tags }}
-          tags: ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}
+          tags: ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}
 #          labels: ${{ steps.meta.outputs.labels }}
 #          build-args: |
 #            VERSION=${{ steps.meta.outputs.version }}
