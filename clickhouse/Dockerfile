@@ -5,11 +5,12 @@ FROM registry.access.redhat.com/ubi9/ubi
 USER 65534:65534
 
 COPY LICENSE /licenses/LICENSE
+
 COPY --from=base /etc/clickhouse* /etc/
 COPY --from=base /usr/bin/clickhouse* /usr/bin/
-COPY --from=base /var/lib/clickhouse* /var/lib/
-COPY --from=base /var/log/clickhouse* /var/log/
-COPY --from=base /docker-entrypoint-initdb.d /entrypoint.sh /
+COPY --from=base /entrypoint.sh /entrypoint.sh
+
+RUN mkdir /var/lib/clickhouse /var/log/clickhouse-server /docker-entrypoint-initdb.d
 
 EXPOSE 9000 8123 9009
 
