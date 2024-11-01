@@ -7,10 +7,7 @@ COPY LICENSE /licenses/LICENSE
 COPY --from=base /etc/clickhouse-server /etc/clickhouse-server
 COPY --from=base /etc/clickhouse-keeper /etc/clickhouse-keeper
 COPY --from=base /etc/clickhouse-client /etc/clickhouse-client
-COPY --from=base /usr/bin/clickhouse /usr/bin/clickhouse
-COPY --from=base /usr/bin/clickhouse-server /usr/bin/clickhouse-server
-COPY --from=base /usr/bin/clickhouse-keeper /usr/bin/clickhouse-keeper
-COPY --from=base /usr/bin/clickhouse-client /usr/bin/clickhouse-client
+COPY --from=base /usr/bin/clickhouse /usr/bin/clickhouse-server /usr/bin/clickhouse-keeper /usr/bin/clickhouse-client /usr/bin/
 COPY --from=base /entrypoint.sh /entrypoint.sh
 
 RUN mkdir /var/lib/clickhouse /var/log/clickhouse-server /docker-entrypoint-initdb.d \
